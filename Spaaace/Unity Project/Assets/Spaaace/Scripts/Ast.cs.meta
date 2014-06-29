@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b4aa6683abe835946a45f939feb272c7
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Death: {instanceID: 0}
+  - AstLvl4: {fileID: 100002, guid: f1f4085ed6a08d8439a898183eeb3fde, type: 2}
+  - AstLvl3: {fileID: 100002, guid: a3fb72d8997c6fe47a9cab51989f9474, type: 2}
+  - AstLvl2: {fileID: 100002, guid: b4a4c96b54c3a0a438efec3fd72d3647, type: 2}
+  - AstLvl1: {fileID: 100002, guid: a8b111d175b8fc142b967be5f6d10fc6, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
