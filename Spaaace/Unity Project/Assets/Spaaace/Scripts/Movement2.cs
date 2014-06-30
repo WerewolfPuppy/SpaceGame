@@ -20,21 +20,11 @@ public class Movement2 : MonoBehaviour
     Vector3 Dir;
 
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         Dir = transform.forward;
         Point = transform.position;
         amountToMove = speed * Time.deltaTime;
-
-        //transform.rotation = P2_quad;
-        //if(Button2 == pressed){
-        //  transform.Translate(Dir * amountToMove, Space.World);
-        //}
 
         GameObject Cam = GameObject.Find("Main Camera");
         WinScreen WinScript = Cam.GetComponent<WinScreen>();

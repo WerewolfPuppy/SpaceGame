@@ -29,6 +29,7 @@ public class Ast : MonoBehaviour {
     void Update(){
         GameObject Cam = GameObject.Find("Main Camera");
         WinScreen WinScript = Cam.GetComponent<WinScreen>();
+
         if(WinScript.Win == true){
             moveSpeed = 0;
             rigidbody.velocity = WinScript.WinFreeze;
