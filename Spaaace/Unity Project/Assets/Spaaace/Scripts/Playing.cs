@@ -19,7 +19,7 @@ public class Playing : MonoBehaviour {
 
         Time.timeScale = 1;
 
-        GlobalPlayerData.win = false;
+        GlobalPlayerData.gameOver = false;
         GlobalPlayerData.winner = false;
         GlobalPlayerData.playerInt = 0;
 	}
@@ -60,8 +60,11 @@ public class Playing : MonoBehaviour {
         }
 	}
 
-    void OnGUI() { 
-        if(GUI.Button(new Rect(Screen.width/2, Screen.height/2, 75, 25), "Start")){
+    void OnGUI() {
+
+        GUI.Box(new Rect(Screen.width / 2, Screen.height / 2, 125, 25), "Press Enter to Play!");
+
+        if(Input.GetKeyDown(KeyCode.Return)){
             DetectSelection();
         }
     }
@@ -92,6 +95,8 @@ public class Playing : MonoBehaviour {
 
 public static class GlobalPlayerData {
     public static int playerInt = 0;
-    public static bool win = false;
+    public static bool gameOver = false;
     public static bool winner;
+    public static bool win;
+    public static int astCount;
 }

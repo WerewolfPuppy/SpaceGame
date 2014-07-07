@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour {
 
 
 
-        if (GlobalPlayerData.win == true)
+        if (GlobalPlayerData.gameOver == true)
         {
             Time.timeScale = 0;
         }
