@@ -18,10 +18,8 @@ public class Health : MonoBehaviour {
 	}
 
     void Win() {
-        GameObject Cam = GameObject.Find("Main Camera");
-        WinScreen WinScript = Cam.GetComponent<WinScreen>();
-        WinScript.Win = true;
-        WinScript.PlayerWin1 = !Player1;
+        GlobalPlayerData.win = true;
+        GlobalPlayerData.winner = !Player1;
 
         Instantiate(deathExplosion, transform.position, transform.rotation);
         Destroy(gameObject);

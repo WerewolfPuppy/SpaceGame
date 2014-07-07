@@ -17,23 +17,13 @@ public class Ast : MonoBehaviour {
     public GameObject AstLvl1;
 	
 	void Start () {
-        GameObject Cam = GameObject.Find("Main Camera");
-        WinScreen WinScript = Cam.GetComponent<WinScreen>();
-       
-        if(WinScript.Win == false){
-            RandomDir();
-        }
+        
+        RandomDir();
 
     }
 
     void Update(){
-        GameObject Cam = GameObject.Find("Main Camera");
-        WinScreen WinScript = Cam.GetComponent<WinScreen>();
 
-        if(WinScript.Win == true){
-            moveSpeed = 0;
-            rigidbody.velocity = WinScript.WinFreeze;
-        }
         transform.Translate(MoveDir * moveSpeed * Time.deltaTime, Space.World);
     }   
 
@@ -51,22 +41,22 @@ public class Ast : MonoBehaviour {
         if(colInfo.collider.tag == "Missile"){
             
             if(AstLvl == 5){
-                GameObject instance = Instantiate(AstLvl4, transform.position, transform.rotation) as GameObject;
-                GameObject instance2 = Instantiate(AstLvl4, transform.position, transform.rotation) as GameObject;
+              Instantiate(AstLvl4, transform.position, transform.rotation);
+              Instantiate(AstLvl4, transform.position+Vector3.right, transform.rotation);
             }
                 else if(AstLvl == 4){
-                    GameObject instance = Instantiate(AstLvl3, transform.position, transform.rotation) as GameObject;
-                    GameObject instance2 = Instantiate(AstLvl3, transform.position, transform.rotation) as GameObject;
+                    Instantiate(AstLvl3, transform.position, transform.rotation);
+                    Instantiate(AstLvl3, transform.position + Vector3.right, transform.rotation);
                 }
                     else if (AstLvl == 3)
                     {
-                        GameObject instance = Instantiate(AstLvl2, transform.position, transform.rotation) as GameObject;
-                        GameObject instance2 = Instantiate(AstLvl2, transform.position, transform.rotation) as GameObject;
+                        Instantiate(AstLvl2, transform.position, transform.rotation);
+                        Instantiate(AstLvl2, transform.position + Vector3.right, transform.rotation);
                     }
                         else if (AstLvl == 2)
                         {
-                            GameObject instance = Instantiate(AstLvl1, transform.position, transform.rotation) as GameObject;
-                            GameObject instance2 = Instantiate(AstLvl1, transform.position, transform.rotation) as GameObject;
+                            Instantiate(AstLvl1, transform.position, transform.rotation);
+                            Instantiate(AstLvl1, transform.position + Vector3.right, transform.rotation);
                         }
         Destroy(gameObject);
         }

@@ -16,6 +16,12 @@ public class Playing : MonoBehaviour {
 	void Start () {
         player1.transform.position = player1NotPlaying.transform.position;
         player2.transform.position = player2NotPlaying.transform.position;
+
+        Time.timeScale = 1;
+
+        GlobalPlayerData.win = false;
+        GlobalPlayerData.winner = false;
+        GlobalPlayerData.playerInt = 0;
 	}
 	
 	// Update is called once per frame
@@ -86,4 +92,6 @@ public class Playing : MonoBehaviour {
 
 public static class GlobalPlayerData {
     public static int playerInt = 0;
+    public static bool win = false;
+    public static bool winner;
 }

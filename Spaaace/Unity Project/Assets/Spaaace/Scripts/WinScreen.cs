@@ -5,12 +5,10 @@ public class WinScreen : MonoBehaviour {
 
     public bool PlayerWin1;
 
-    public bool Win;
-
     public Vector3 WinFreeze;
 
     void OnGUI() {
-        if(Win == true){
+        if(GlobalPlayerData.win == true){
             WinFreeze = new Vector3(0, 0, 0);
             GlobalPlayerData.playerInt = 0;
            if(PlayerWin1 == true){
@@ -23,6 +21,7 @@ public class WinScreen : MonoBehaviour {
            }
 
            if (GUI.Button(new Rect(Screen.width / 2, (Screen.height / 2) + 50, 110, 25), "Play Again?")) {
+               Time.timeScale = 1;
                Application.LoadLevel("Lobby");
            }
         }

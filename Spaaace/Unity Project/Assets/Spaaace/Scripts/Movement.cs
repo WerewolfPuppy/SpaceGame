@@ -4,19 +4,26 @@ using System.IO.Ports;
 
 public class Movement : MonoBehaviour {
 
-    float speed=5;
-    float amountToMove;
-    float nextFire;
-    float fireRate=0.5f;
+    private float speed=5;
+    private float amountToMove;
+    private float nextFire;
+    private float fireRate = 0.5f;
+
+    private string up;
+    private string down;
+    private string left;
+    private string right;
+    private string launch;
+
+    public bool playerID;
 
     public GameObject Spawnpoint;
     public GameObject Missile;
     public GameObject Motor;
 
-    float force=11;
+    private float force = 11;
 
-    Vector3 Point;
-    Vector3 Dir;
+    private Vector3 Point;
        
 
     void Start() {
@@ -24,25 +31,32 @@ public class Movement : MonoBehaviour {
     }
         
     void Update(){
-        Dir = transform.forward;
         Point=transform.position;
         amountToMove = speed * Time.deltaTime;
 
-        //transform.rotation = P1_quad;
-        //if(Button1 == pressed){
-        //  transform.Translate(Dir * amountToMove, Space.World);
-        //}
 
-        GameObject Cam = GameObject.Find("Main Camera");
-        WinScreen WinScript = Cam.GetComponent<WinScreen>();
-        if (WinScript.Win == true)
+
+        if (GlobalPlayerData.win == true)
         {
-            Dir = WinScript.WinFreeze;
+            Time.timeScale = 0;
         }
-                    
-        //MAIN MOVE
-        if(Input.GetKey(KeyCode.W)){
-            transform.Translate(Dir * amountToMove, Space.World);
+
+        if (playerID)
+        {
+            up = "UpArrow";
+            left = "LeftArrow";
+            right = "RightArrow";
+            launch = "RightControl";
+        }
+        else {
+            up = "W";
+            left = "A";
+            right = "D";
+            launch = "LeftShift";
+        }
+            //MAIN MOVE
+        if(Input.GetKey((KeyCode) System.Enum.Parse(typeof(KeyCode), up.ToString()))){
+            transform.Translate(transform.forward * amountToMove, Space.World);
             Motor.particleEmitter.emit = true;
         }
 
@@ -51,17 +65,20 @@ public class Movement : MonoBehaviour {
             Motor.particleEmitter.emit = false;
         }
 
-        
-        if (Input.GetKey(KeyCode.A)){
+
+        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), left.ToString())))
+        {
             transform.RotateAround(Point, Vector3.up, -75 * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.D)){
+        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), right.ToString())))
+        {
             transform.RotateAround(Point, Vector3.up, 75 * Time.deltaTime);
         }
 
         //LAUNCH MISSILE
-        if(Input.GetKey(KeyCode.LeftShift) && WinScript.Win == false){
+        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), launch.ToString())))
+        {
             Launch();
         }
     }
