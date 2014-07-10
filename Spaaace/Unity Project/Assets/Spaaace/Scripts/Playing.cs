@@ -22,6 +22,7 @@ public class Playing : MonoBehaviour {
         GlobalPlayerData.gameOver = false;
         GlobalPlayerData.winner = false;
         GlobalPlayerData.playerInt = 0;
+        GlobalPlayerData.highScore = 0;
 	}
 	
 	// Update is called once per frame
@@ -99,4 +100,5 @@ public static class GlobalPlayerData {
     public static bool winner;
     public static bool win;
     public static int astCount;
+    public static int highScore;
 }

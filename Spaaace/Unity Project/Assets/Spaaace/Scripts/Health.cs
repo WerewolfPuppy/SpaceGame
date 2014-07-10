@@ -7,8 +7,6 @@ public class Health : MonoBehaviour {
     
     public bool Dead;
 
-    private int AstCount = 0;
-
     public GameObject deathExplosion;
 
     void OnCollisionEnter (Collision colinfo) {
@@ -18,19 +16,9 @@ public class Health : MonoBehaviour {
         }
 	}
 
-    void Win() {
-
-        GameObject[] Asts = GameObject.FindGameObjectsWithTag("Ast");
-
-        for (int i = 1; i > Asts.Length; i++) {
-            foreach (GameObject element in Asts) {
-                AstCount++;
-            }
-        }
-
-        GlobalPlayerData.astCount = AstCount;
-
-        if (AstCount == 0)
+    void Win()
+    {
+        if (GlobalPlayerData.astCount == 0)
         {
             GlobalPlayerData.win = true;
         }
@@ -46,6 +34,8 @@ public class Health : MonoBehaviour {
         }
 
         Instantiate(deathExplosion, transform.position, transform.rotation);
+        Time.timeScale = 0;
         Destroy(gameObject);
     }
+
 }

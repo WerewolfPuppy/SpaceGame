@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour {
             Time.timeScale = 0;
         }
 
+        #region Controls for players
         if (playerID)
         {
             up = "UpArrow";
@@ -54,8 +55,10 @@ public class Movement : MonoBehaviour {
             right = "D";
             launch = "LeftShift";
         }
-            //MAIN MOVE
-        if(Input.GetKey((KeyCode) System.Enum.Parse(typeof(KeyCode), up.ToString()))){
+        #endregion
+
+        #region MOVEMENT
+        if (Input.GetKey((KeyCode) System.Enum.Parse(typeof(KeyCode), up.ToString()))){
             transform.Translate(transform.forward * amountToMove, Space.World);
             Motor.particleEmitter.emit = true;
         }
@@ -81,13 +84,15 @@ public class Movement : MonoBehaviour {
         {
             Launch();
         }
+#endregion
+
     }
 
     void Launch() {
         if(Time.time >= nextFire){
 
-            GameObject instance = Instantiate(Missile, Spawnpoint.transform.position, Spawnpoint.transform.rotation)as GameObject; 
-            Vector3 pos = instance.transform.forward;    
+            GameObject instance = Instantiate(Missile, Spawnpoint.transform.position, Spawnpoint.transform.rotation)as GameObject;
+            Vector3 pos = instance.transform.forward;
             instance.rigidbody.AddForce(pos*force, ForceMode.Impulse);
 
             nextFire = Time.time + fireRate;

@@ -3,30 +3,37 @@ using System.Collections;
 
 public class WinScreen : MonoBehaviour {
 
+    void Update()
+    {
+
+        GameObject[] Asts = GameObject.FindGameObjectsWithTag("Ast");
+
+        GlobalPlayerData.astCount = Asts.Length;
+    }
 
     void OnGUI() {
         if (GlobalPlayerData.gameOver == true)
         {
             if(GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0){
-                GUI.Box(new Rect(Screen.width / 2, Screen.height / 2, 100, 25), "Player 1 Wins!");
+                GUI.Box(new Rect(Screen.width / 2-50, Screen.height / 2 - 12.5F, 100, 25), "Player 1 Wins!");
             }
 
             if (!GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0)
             {
-                GUI.Box(new Rect(Screen.width/2, Screen.height/2, 100, 25), "Player 2 Wins!");
+                GUI.Box(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 12.5F, 100, 25), "Player 2 Wins!");
             }
 
-            if (GlobalPlayerData.gameOver && GlobalPlayerData.playerInt != 0 && !GlobalPlayerData.win)
+            if (GlobalPlayerData.playerInt != 0 && GlobalPlayerData.win)
             {
-                GUI.Box(new Rect(Screen.width / 2, Screen.height / 2, 100, 25), "Player Wins!");
+                GUI.Box(new Rect(Screen.width / 2-50, Screen.height / 2-12.5F, 100, 25), "Player Wins!");
             }
 
-            if (!GlobalPlayerData.gameOver && GlobalPlayerData.playerInt != 0 && GlobalPlayerData.win)
+            if (GlobalPlayerData.playerInt != 0 && !GlobalPlayerData.win)
             {
-                GUI.Box(new Rect(Screen.width / 2, Screen.height / 2, 100, 25), "Astroids Remaining: "+GlobalPlayerData.astCount);
+                GUI.Box(new Rect(Screen.width / 2-100, Screen.height / 2-12.5F, 200, 25), "Score: "+GlobalPlayerData.highScore);
             }
 
-            if (GUI.Button(new Rect(Screen.width / 2, (Screen.height / 2) + 50, 110, 25), "Play Again?")) {
+            if (GUI.Button(new Rect(Screen.width / 2-55, (Screen.height / 2)+12.5F, 110, 25), "Play Again?")) {
                 GlobalPlayerData.gameOver = false;
                 Time.timeScale = 1;
                 Application.LoadLevel("Lobby");

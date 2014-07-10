@@ -19,7 +19,6 @@ public class Ast : MonoBehaviour {
 	void Start () {
         
         RandomDir();
-
     }
 
     void Update(){
