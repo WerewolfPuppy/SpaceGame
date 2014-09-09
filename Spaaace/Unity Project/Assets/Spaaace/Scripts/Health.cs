@@ -18,14 +18,6 @@ public class Health : MonoBehaviour {
 
     void Win()
     {
-        if (GlobalPlayerData.astCount == 0)
-        {
-            GlobalPlayerData.win = true;
-        }
-        else {
-            GlobalPlayerData.win = false;
-        }
-       
         GlobalPlayerData.gameOver = true;
 
         if (GlobalPlayerData.playerInt == 0)
