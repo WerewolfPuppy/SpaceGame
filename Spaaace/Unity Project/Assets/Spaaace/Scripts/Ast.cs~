@@ -24,7 +24,7 @@ public class Ast : MonoBehaviour {
     void Update(){
 
         transform.Translate(MoveDir * moveSpeed * Time.deltaTime, Space.World);
-	transform.position = New Vector3(transform.position.x,1,transform.position.z);
+	transform.position = new Vector3(transform.position.x,0,transform.position.z);
     }   
 
     void RandomDir() {
