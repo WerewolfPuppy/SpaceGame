@@ -19,19 +19,14 @@ public class WinScreen : MonoBehaviour {
                 GlobalPlayerData.win = false;
             }
 
-            if(GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0 && GlobalPlayerData.draw == false){
+            if(GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0){
                 GUI.Box(new Rect(Screen.width / 2-50, Screen.height / 2 - 12.5F, 100, 25), "Player 1 Wins!");
             }
 
-            if (!GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0 && GlobalPlayerData.draw == false)
+            if (!GlobalPlayerData.winner && GlobalPlayerData.playerInt == 0)
             {
                 GUI.Box(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 12.5F, 100, 25), "Player 2 Wins!");
             }
-	    
-	    if(GlobalPlayerData.draw == true)
-	      {
-		GUI.Box(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 12.5F, 100, 25), "Draw!");
-	      }
 
             if (GlobalPlayerData.playerInt != 0 && GlobalPlayerData.win)
             {

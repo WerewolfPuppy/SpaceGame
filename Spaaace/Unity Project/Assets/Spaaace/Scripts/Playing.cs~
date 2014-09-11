@@ -21,7 +21,6 @@ public class Playing : MonoBehaviour {
 
         GlobalPlayerData.gameOver = false;
         GlobalPlayerData.winner = false;
-	GlobalPlayerData.draw = false;
         GlobalPlayerData.playerInt = 0;
         GlobalPlayerData.highScore = 0;
 	}
@@ -96,11 +95,10 @@ public class Playing : MonoBehaviour {
 }
 
 public static class GlobalPlayerData {
-  public static int playerInt = 0;
-  public static bool gameOver = false;
-  public static bool winner;
-  public static bool win;
-  public static bool draw;
-  public static int astCount;
-  public static int highScore;
+    public static int playerInt = 0;
+    public static bool gameOver = false;
+    public static bool winner;
+    public static bool win;
+    public static int astCount;
+    public static int highScore;
 }
